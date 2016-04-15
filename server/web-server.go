@@ -18,17 +18,16 @@ func loadIndex(w *http.ResponseWriter) {
 }
 
 func serveFile(w *http.ResponseWriter, filePath string) {
-	fmt.Println("page requested by the client : " + filePath)
 	pwd, _ := os.Getwd()
 	filePath = pwd + "/../client" + filePath
-	fmt.Println(filePath)
 	file, _ := ioutil.ReadFile(filePath)
 
 	io.WriteString(*w, string(file))
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("New client request : ")
+	fmt.Println("New client request. Header : ")
+	fmt.Println(r.Header)
 	if r.URL.Path == "/" {
 		loadIndex(&w)
 	} else {

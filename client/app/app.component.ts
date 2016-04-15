@@ -2,8 +2,9 @@ import {Component} from 'angular2/core';
 
 @Component({
   selector: 'my-app',
-  template: '<h1>My First Angular 2 App</h1>'
+  templateUrl: 'app/app.component.html'
 })
 export class AppComponent{
-
+  title = 'GoLang + Websockets + Angular 2 = An AWESOME App !!';
+  
 }

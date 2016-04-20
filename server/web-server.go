@@ -20,9 +20,12 @@ func loadIndex(w *http.ResponseWriter) {
 func serveFile(w *http.ResponseWriter, filePath string) {
 	pwd, _ := os.Getwd()
 	filePath = pwd + "/../client" + filePath
-	file, _ := ioutil.ReadFile(filePath)
-
-	io.WriteString(*w, string(file))
+	file, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		loadIndex(w)
+	} else {
+		io.WriteString(*w, string(file))
+	}
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {

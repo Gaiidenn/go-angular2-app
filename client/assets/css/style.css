@@ -1,10 +1,15 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 70px;
+  color: #112233;
 }
 
 a {
-    color: #44BBFF;
+    color: #fff;
+}
+
+a:hover {
+    color: #66CC99;
 }
 
 .form-control {
@@ -34,6 +39,12 @@ a {
   background-color: #F0F1F5;
 }
 
+#page-content-wrapper h1 {
+    width: 100%;
+    background: none;
+    color: #112233;
+}
+
 .topbar-nav {
   height: 70px;
   padding: 10px 5px;
@@ -42,7 +53,7 @@ a {
 
 .topbar-nav, #sidebar-wrapper {
   background-color: #112233;
-  color: rgb(232, 232, 232);
+  color: #F0F1F5;
 }
 
 .sidebar-nav {
@@ -69,8 +80,13 @@ a {
 .sidebar-nav.nav-pills > li.active > a,
 .sidebar-nav.nav-pills > li.active > a:focus,
 .sidebar-nav.nav-pills > li.active > a:hover {
-    color: rgb(15, 15, 15);
-    background-color: #337ab7;
+    color: #112233;
+    background-color: #44BBFF;
+}
+
+.sidebar-nav.nav-pills > li > a:focus,
+.sidebar-nav.nav-pills > li > a:hover {
+    background-color: rgba(255,255,255, 0.1);
 }
 
 @media (max-width:767px) {

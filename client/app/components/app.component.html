@@ -1,18 +1,9 @@
-<my-topbar [title]="title"></my-topbar>
-<div id="wrapper">
-    <div id="sidebar-wrapper">
-        <my-sidebar></my-sidebar>
-    </div>
-    <div id="page-content-wrapper">
-        <div class="page-content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- content of page -->
-                        <router-outlet></router-outlet>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<h1>{{title}}</h1>
+<nav>
+    <ul>
+        <li><a [routerLink]="['Dashboard']">Dashboard</a>
+        <li><a [routerLink]="['Todo']">Todo</a>
+    </ul>
+</nav>
+<input placeholder="Send a message" #message (keyup.enter)="sendMessage(message.value);message.value=''">
+<router-outlet></router-outlet>

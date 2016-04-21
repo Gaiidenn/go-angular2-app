@@ -1,7 +1,6 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
-import {TopbarComponent} from '../shared/topbar/topbar.component';
-import {SidebarComponent} from '../shared/sidebar/sidebar.component';
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from 'angular2/router';
+import {$WebSocket} from 'angular2-websocket/angular2-websocket';
 import {DashboardComponent} from '../components/dashboard/dashboard.component';
 import {TodoComponent} from '../components/todo/todo.component';
 
@@ -9,9 +8,7 @@ import {TodoComponent} from '../components/todo/todo.component';
     selector: 'my-app',
     templateUrl: 'app/components/app.component.html',
     directives: [
-        ROUTER_DIRECTIVES,
-        TopbarComponent,
-        SidebarComponent
+        ROUTER_DIRECTIVES
     ],
     providers: [
         ROUTER_PROVIDERS
@@ -32,4 +29,20 @@ import {TodoComponent} from '../components/todo/todo.component';
 ])
 export class AppComponent{
     title = 'My GoWA2 APP !!';
+    private _ws: $WebSocket;
+
+    constructor(
+        private _router: Router
+    ) {
+        this._ws = new $WebSocket("ws://localhost:8080/");
+        let cb = function(message: any) {
+            alert(message.data);
+        }
+        this._ws.onMessage(cb, null);
+    }
+
+    sendMessage(message: string) {
+        this._ws.send(message);
+        //alert('message "' + message + '" sent!');
+    }
 }

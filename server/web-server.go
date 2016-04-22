@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	//"strings"
 	"github.com/gorilla/websocket"
 	log "github.com/Sirupsen/logrus"
 )

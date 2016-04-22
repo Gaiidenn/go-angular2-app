@@ -36,13 +36,16 @@ export class AppComponent{
     ) {
         this._ws = new $WebSocket("ws://localhost:8080/");
         let cb = function(message: any) {
-            alert(message.data);
+            if (message.data.length > 0) {
+                alert(message.data);
+            }
         }
         this._ws.onMessage(cb, null);
     }
 
     sendMessage(message: string) {
-        this._ws.send(message);
-        //alert('message "' + message + '" sent!');
+        if (message.length > 0) {
+            this._ws.send(message);
+        }
     }
 }
